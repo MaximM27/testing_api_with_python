@@ -1,6 +1,9 @@
 import requests
-print('hello from Max')
 
-response = requests.get("https://playground.learnqa.ru/api/get_text")
-print(response.text)
+response = requests.get("https://playground.learnqa.ru/api/long_redirect", allow_redirects=True)
+
+url = response.url
+q = len(response.history)
+print(f"Количество редиректов равно {q}")
+print(f"Конечный url запроса: {url}")
 
