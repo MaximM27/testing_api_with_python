@@ -5,6 +5,7 @@ url = "https://playground.learnqa.ru/api/homework_header"
 response = requests.get(url)
 print(dict(response.headers))
 
+
 def test_check_header_in_response():
       response1 = requests.get(url)
       assert response1.status_code == 200, "Wrong response code"
