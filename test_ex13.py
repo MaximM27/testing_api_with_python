@@ -6,11 +6,6 @@ import json
 class Test:
     with open("UserAgent_list.json") as f:
         user_agent_params = json.load(f)
-        user_agent_list = [i["User-Agent"] for i in user_agent_params]
-        url = "https://playground.learnqa.ru/ajax/api/user_agent_check"
-        data = {"User-Agent": user_agent_list[4]}
-        response = requests.get(url, headers=data)
-        print(response.json()["platform"], response.json()["browser"], response.json()["device"])
 
     @pytest.mark.parametrize("params", user_agent_params)
     def test_check_user_agent(self, params):
