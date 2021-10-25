@@ -1,6 +1,5 @@
 import requests
-import json
-from get_password_from_wiki import get_password_list
+from old.get_password_from_wiki import get_password_list
 
 password_list = get_password_list()
 get_password_url = "https://playground.learnqa.ru/ajax/api/get_secret_password_homework"
