@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  test_runner:
+    build: .
+    image: pytest_tunner
+    container_name: pytest_runner_works
+    environment:
+      - ENV=dev
+    volumes:
+      - C:/Projects/testing_api_with_python/tests_project/

@@ -4,6 +4,8 @@ response = requests.get("https://playground.learnqa.ru/api/long_redirect", allow
 
 url = response.url
 q = len(response.history)
-print(f"Количество редиректов равно {q}")
-print(f"Конечный url запроса: {url}")
+#print(f"Количество редиректов равно {q}")
+#print(f"Конечный url запроса: {url}")
 
+text = response.json()
+print(text)
