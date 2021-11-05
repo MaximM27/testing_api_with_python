@@ -1,5 +1,6 @@
 from requests import Response
 import json.decoder
+from lib.my_requests import MyRequests
 from datetime import datetime
 
 class BaseCase:
@@ -34,3 +35,8 @@ class BaseCase:
             'lastName': 'learnqa',
             'email': email
         }
+
+    def user_registration(self):
+        data = self.prepare_registration_data()
+        response = MyRequests.post('/user/', data=data)
+        return data, response
