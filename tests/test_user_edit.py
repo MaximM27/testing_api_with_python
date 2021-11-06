@@ -5,7 +5,6 @@ from lib.my_requests import MyRequests
 
 class TestUserEdit(BaseCase):
     def test_edit_just_created_user(self):
-
         #Register
         register_data = self.prepare_registration_data()
         response1 = MyRequests.post("/user/", data=register_data)
