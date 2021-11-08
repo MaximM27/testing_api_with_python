@@ -2,8 +2,10 @@ from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
 import random
+import allure
 
 
+@allure.epic("Get user data cases")
 class TestUserGet(BaseCase):
     def create_login_request_by_user(self):
         data = {
@@ -14,6 +16,8 @@ class TestUserGet(BaseCase):
         response = MyRequests.post("/user/login", data=data)
         return response
 
+    @allure.description("This test try to get user details without auth data")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_user_details_not_auth(self):
         response = MyRequests.get("/user/2")
         Assertions.assert_json_value_has_key(response, "username")
@@ -21,6 +25,8 @@ class TestUserGet(BaseCase):
         Assertions.assert_json_value_has_not_key(response, "firstName")
         Assertions.assert_json_value_has_not_key(response, "lastName")
 
+    @allure.description("This test try to get user details with auth as same user")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_user_details_auth_as_same_user(self):
 
         response1 = self.create_login_request_by_user()
@@ -34,6 +40,8 @@ class TestUserGet(BaseCase):
         expected_fields = ['username', 'email', 'firstName', 'lastName']
         Assertions.assert_json_value_has_keys(response2, expected_fields)
 
+    @allure.description("This test try to get user details with auth as another user")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_get_user_details_auth_as_another_user(self):
 
         response1 = self.create_login_request_by_user()
